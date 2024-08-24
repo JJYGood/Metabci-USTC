@@ -12,6 +12,7 @@ from metabci.brainstim.paradigm import (
     pix2height,
     code_sequence_generate,
 )
+
 from metabci.brainstim.framework import Experiment
 from psychopy.tools.monitorunittools import deg2pix
 

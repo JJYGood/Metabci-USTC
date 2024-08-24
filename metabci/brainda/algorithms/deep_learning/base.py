@@ -221,14 +221,14 @@ class SkorchNet:
     def __call__(self, *args, **kwargs):
         model = self.module(*args, **kwargs)
         net = NeuralNetClassifierNoLog(
-            model.double(),
+            model,
             criterion=nn.CrossEntropyLoss,
             optimizer=optim.Adam,
             optimizer__weight_decay=0,
-            batch_size=128,
+            batch_size=64,
             lr=1e-2,
-            max_epochs=300,
-            device="cpu",
+            max_epochs=15,
+            device=torch.device('cuda' if torch.cuda.is_available() else 'cpu'),
             train_split=ValidSplit(0.2, stratified=True),
             iterator_train__shuffle=True,
             callbacks=[
